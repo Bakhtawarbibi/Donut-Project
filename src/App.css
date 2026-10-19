@@ -1,0 +1,486 @@
+@import "tailwindcss";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.donut-page {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  color: #30201e;
+  transition: background-color 0.5s ease;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  padding: 18px 6%;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-inner {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  transform-origin: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #dd266f;
+}
+
+.contact-btn {
+  padding: 12px 26px;
+  border-radius: 50px;
+  background: #e96b8c;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: #c92c65;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px #c92c6540;
+}
+
+.menu-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  color: #30201e;
+  font-size: 27px;
+  cursor: pointer;
+}
+
+/* Hero layout */
+.hero {
+  width: 100%;
+  max-width: 1400px;
+  min-height: calc(100vh - 120px);
+  margin: auto;
+  padding: 35px 6% 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 0;
+  z-index: 2;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.65;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(52px, 6vw, 88px);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -4px;
+}
+
+.pink-dot {
+  color: #dd266f;
+}
+
+.description {
+  max-width: 420px;
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #463a37;
+  opacity: 0.8;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.order-btn,
+.menu-btn {
+  min-height: 48px;
+  padding: 13px 24px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.order-btn {
+  color: white;
+  box-shadow: 0 8px 25px #00000018;
+}
+
+.order-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px #00000025;
+}
+
+.order-btn span {
+  font-size: 18px;
+}
+
+.menu-btn {
+  border: 1px solid #30201e55;
+}
+
+.menu-btn:hover {
+  background: #ffffff50;
+  transform: translateY(-3px);
+}
+
+/* Donut flavor selector */
+.donut-selectors {
+  margin-top: 42px;
+}
+
+.selector-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  opacity: 0.65;
+  margin-bottom: 15px;
+}
+
+.selector-list {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.donut-option {
+  width: 62px;
+  height: 62px;
+  padding: 5px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: #ffffff45;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.donut-option img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.donut-option:hover img {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.donut-option.selected {
+  border-color: #30201e;
+  background: #ffffff80;
+  transform: translateY(-4px);
+}
+
+/* Large donut and shadows */
+.donut-visual {
+  flex: 1.2;
+  min-width: 0;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.main-donut {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  object-fit: contain;
+  overflow: visible;
+  will-change: transform, opacity;
+}
+
+.donut-glow {
+  position: absolute;
+  width: 65%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(75px);
+  z-index: 0;
+  pointer-events: none;
+  transition: background-color 0.5s ease;
+}
+
+.floating-star {
+  position: absolute;
+  z-index: 3;
+  font-size: 35px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.star-one {
+  top: 15%;
+  left: 13%;
+}
+
+.star-two {
+  right: 7%;
+  top: 30%;
+  font-size: 48px;
+  animation-delay: 0.6s;
+}
+
+.star-three {
+  bottom: 14%;
+  right: 18%;
+  font-size: 26px;
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(12deg);
+  }
+}
+
+/* Footer */
+.page-footer {
+  width: 100%;
+  padding: 0 6% 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  opacity: 0.65;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .hero {
+    padding: 35px 5%;
+    gap: 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 7vw, 70px);
+  }
+
+  .donut-visual {
+    min-height: 400px;
+  }
+
+  .main-donut {
+    max-width: 100%;
+  }
+
+  .nav-links {
+    gap: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .navbar {
+    padding: 14px 5%;
+  }
+
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .nav-inner {
+    gap: 12px;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 75px;
+    left: 5%;
+    right: 5%;
+    padding: 25px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 23px;
+    border-radius: 18px;
+    background: #fff8f4;
+    box-shadow: 0 15px 40px #00000018;
+  }
+
+  .nav-links.menu-open {
+    display: flex;
+  }
+
+  .contact-btn {
+    padding: 10px 15px;
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 45px 7% 30px;
+    gap: 0;
+  }
+
+  .hero-content {
+    order: 1;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 13vw, 76px);
+    letter-spacing: -3px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .description {
+    font-size: 13px;
+    max-width: 350px;
+  }
+
+  .hero-buttons {
+    margin-top: 23px;
+  }
+
+  .order-btn,
+  .menu-btn {
+    padding: 12px 18px;
+  }
+
+  .donut-visual {
+    order: 0;
+    min-height: auto;
+    height: min(95vw, 390px);
+    margin-bottom: 25px;
+  }
+
+  .main-donut {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100%;
+  }
+
+  .donut-glow {
+    width: 65%;
+    filter: blur(45px);
+  }
+
+  .floating-star {
+    font-size: 25px;
+  }
+
+  .star-one {
+    left: 8%;
+  }
+
+  .star-two {
+    right: 5%;
+    font-size: 32px;
+  }
+
+  .donut-selectors {
+    margin-top: 32px;
+  }
+
+  .donut-option {
+    width: 55px;
+    height: 55px;
+  }
+
+  .page-footer {
+    padding: 20px 7%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 9px;
+    line-height: 1.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-star {
+    animation: none;
+  }
+}
